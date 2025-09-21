@@ -72,7 +72,7 @@ if (cscore==hscore)
 }
 else if(cscore>hscore)
 {
-    console.log("Computer WON");
+    console.log("Computer WON :(");
 }
 else if(hscore>cscore)
 {

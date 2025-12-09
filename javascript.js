@@ -12,6 +12,8 @@ let results=document.querySelector('#results');
 let score=document.querySelector('#score');
 let winner=document.querySelector('#winner');
 let gameOver = false;
+let replaybtn=document.querySelector('#replay');
+ score.textContent=`Your Score=${hscore}; Computer Score= ${cscore}`;
 rockbtn.addEventListener('click',()=>{
     if (gameOver) return;
     hSelection="rock";
@@ -96,6 +98,21 @@ function playRound(cchoice,hchoice){
         {
             winner.textContent="YOU WON :)"
             gameOver = true;
+        }
+        if(gameOver)
+        {
+            replaybtn.textContent="Replay?";
+            replaybtn.style.display="block";
+            replaybtn.addEventListener('click',()=>{
+                gameOver=false;
+                hscore=0;
+                cscore=0;
+                choice.textContent="";
+                results.textContent="";
+                score.textContent="";
+                winner.textContent="";
+                replaybtn.style.display="none";
+            });
         }
     }
 /*for (let i=0;i<5;i++){

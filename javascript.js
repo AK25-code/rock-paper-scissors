@@ -7,34 +7,38 @@ let cSelection;
 let hscore=0;
 let cscore=0;
 let round=document.querySelector('#round');
-let choice=document.querySelector('#choice');
+let yourchoice=document.querySelector('#yourchoice');
+let computerchoice=document.querySelector('#computerchoice');
 let results=document.querySelector('#results');
-let score=document.querySelector('#score');
+let yourscore=document.querySelector('#yourscore');
+let computerscore=document.querySelector('#computerscore');
 let winner=document.querySelector('#winner');
 let gameOver = false;
 let replaybtn=document.querySelector('#replay');
- score.textContent=`Your Score=${hscore}; Computer Score= ${cscore}`;
+ yourscore.textContent=`Your=${hscore}`;
+ computerscore.textContent=`Computer= ${cscore}`;
 rockbtn.addEventListener('click',()=>{
     if (gameOver) return;
     hSelection="rock";
     cSelection= getComputerChoice();
-    choice.textContent=`Computer: ${cSelection}\n Human: ${hSelection}`;
+    computerchoice.textContent=`Computer: ${cSelection}`;
+    yourchoice.textContent=`Human: ${hSelection}`
     playRound(cSelection, hSelection);
 });
 paperbtn.addEventListener('click',()=>{
     if (gameOver) return;
     hSelection="paper";
     cSelection= getComputerChoice();
-    choice.textContent=`Computer:${cSelection} Human:${hSelection}`;
+   computerchoice.textContent=`Computer: ${cSelection}`;
+    yourchoice.textContent=`Human: ${hSelection}`
     playRound(cSelection, hSelection);
 });
 scissorsbtn.addEventListener('click',()=>{
     if (gameOver) return;
     hSelection="scissors";
     cSelection= getComputerChoice();
-    choice.textContent=`Computer:${cSelection}
-        Human:${hSelection}
-    `;
+    computerchoice.textContent=`Computer: ${cSelection}`;
+    yourchoice.textContent=`Human: ${hSelection}`
     playRound(cSelection, hSelection);
 });
 function getComputerChoice()
@@ -88,7 +92,8 @@ function playRound(cchoice,hchoice){
                     hscore++;
                 }
         }
-        score.textContent=`Your Score=${hscore}; Computer Score= ${cscore}`;
+        yourscore.textContent=`Your=${hscore}`;
+        computerscore.textContent=`Computer= ${cscore}`;
         if (cscore==5)
         {
             winner.textContent="YOU LOST :(";
@@ -107,11 +112,13 @@ function playRound(cchoice,hchoice){
                 gameOver=false;
                 hscore=0;
                 cscore=0;
-                choice.textContent="";
+                yourchoice.textContent="";
+                computerchoice.textContent="";
                 results.textContent="";
-                score.textContent="";
                 winner.textContent="";
                 replaybtn.style.display="none";
+                yourscore.textContent=`Your=${hscore}`;
+                computerscore.textContent=`Computer= ${cscore}`;
             });
         }
     }
